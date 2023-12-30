@@ -1,0 +1,148 @@
+/** @jsx h */
+import { h, FreshContext, LuciaError, PageProps, pascalCase, WithCsrf } from "../deps.ts";
+import { PlantationInnerParams } from "../types.ts";
+import { styles } from "../utils/style.ts";
+import { sameLogicValidate } from "../utils/validates.ts";
+import { PASSWORD } from "../utils/const.ts";
+
+export function getCreateHandler(
+  {
+    auth,
+    loginAfterPath,
+    resourceIdentifierName,
+    identifierSchema,
+    passwordSchema,
+  }: PlantationInnerParams,
+) {
+  return {
+    async POST(req: Request, ctx: FreshContext<WithCsrf>) {
+      const formData = await req.formData();
+      const token = formData.get("csrf");
+
+      if (!ctx.state.csrf.csrfVerifyFunction(token?.toString() ?? null)) {
+        return new Response(null, {
+          status: 302,
+          headers: {
+            Location: req.headers.get("referer") || "/",
+          },
+        });
+      }
+
+      const identifier = formData.get(resourceIdentifierName);
+      const password = formData.get(PASSWORD);
+
+      const identifierResult = sameLogicValidate(
+        resourceIdentifierName,
+        identifier?.toString(),
+        identifierSchema,
+      );
+      const passwordResult = sameLogicValidate(
+        "password",
+        password?.toString(),
+        passwordSchema,
+      );
+
+      if (!(identifierResult.success && passwordResult.success)) {
+        return ctx.render({
+          errors: [...identifierResult.errors, ...passwordResult.errors],
+          identifier,
+        });
+      }
+
+      try {
+        const user = await auth.createUser({
+          key: {
+            providerId: resourceIdentifierName,
+            providerUserId: identifierResult.data,
+            password: passwordResult.data,
+          },
+          attributes: {
+            [resourceIdentifierName]: identifierResult.data,
+          },
+        });
+        const session = await auth.createSession({
+          userId: user.userId,
+          attributes: {},
+        });
+        const sessionCookie = auth.createSessionCookie(session);
+
+        return new Response(null, {
+          headers: {
+            Location: loginAfterPath,
+            "Set-Cookie": sessionCookie.serialize(), // store session cookie
+          },
+          status: 302,
+        });
+      } catch (e) {
+        console.error("e", e);
+        if (e instanceof LuciaError) {
+          return ctx.render({
+            errors: ["Auth system error"],
+            identifier,
+          });
+        }
+        return new Response("An unknown error occurred", {
+          status: 500,
+        });
+      }
+    },
+  };
+}
+
+export function getCreateComponent(
+  { resourceIdentifierName, paths }: PlantationInnerParams,
+) {
+  return function (
+    { data, state }: PageProps<
+      { errors: string[]; identifier: string },
+      WithCsrf
+    >,
+  ) {
+    return (
+      <div style={styles.block}>
+        <div>
+          <h2>Create Account</h2>
+        </div>
+        <div>
+          <form action={paths.createPath} method="post">
+            <input type="hidden" name="csrf" value={state.csrf.getTokenStr()} />
+            <div style={styles.row}>
+              {data?.errors?.length > 0 && (
+                <ul>
+                  {data.errors.map((error) => <li>{error}</li>)}
+                </ul>
+              )}
+            </div>
+            <div style={styles.row}>
+              <label for={resourceIdentifierName} style={styles.label}>
+                {pascalCase(resourceIdentifierName)}
+              </label>
+              <input
+                type="text"
+                id={resourceIdentifierName}
+                name={resourceIdentifierName}
+                style={styles.textbox}
+                value={data?.identifier}
+              />
+            </div>
+            <div style={styles.row}>
+              <label for="password" style={styles.label}>Password</label>
+              <input
+                type="password"
+                id={PASSWORD}
+                name={PASSWORD}
+                style={styles.textbox}
+              />
+            </div>
+            <div style={styles.row}>
+              <button type="submit" style={styles.button}>CREATE</button>
+            </div>
+          </form>
+        </div>
+        <div>
+          <a href={paths.loginPath} style={styles.link}>LOGIN</a>
+        </div>
+      </div>
+    );
+  };
+}
