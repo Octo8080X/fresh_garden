@@ -8,6 +8,6 @@ export {
   type WithCsrf,
 } from "./deps.ts";
 export { type PlantationInnerParams } from "./types.ts";
-export { styles } from "./utils/style.ts";
-export { sameLogicValidate, stringValidate } from "./utils/validates.ts";
-export { PASSWORD } from "./utils/const.ts";
+export { styles } from "./src/utils/style.ts";
+export { sameLogicValidate, stringValidate } from "./src/utils/validates.ts";
+export { PASSWORD } from "./src/utils/const.ts";

@@ -1,4 +1,3 @@
-/** @jsx h */
 import {
   FreshContext,
   h,
@@ -6,8 +5,8 @@ import {
   PageProps,
   pascalCase,
   WithCsrf,
-} from "../deps.ts";
-import { PlantationInnerParams } from "../types.ts";
+} from "../../deps.ts";
+import { PlantationInnerParams } from "../../types.ts";
 import { styles } from "../utils/style.ts";
 import { sameLogicValidate } from "../utils/validates.ts";
 import { PASSWORD } from "../utils/const.ts";

@@ -1,4 +1,4 @@
-import { JSX } from "preact";
+import { JSX, h } from "preact";
 
 interface LogoutFormProps extends JSX.HTMLAttributes<HTMLButtonElement> {
   csrfToken: string;

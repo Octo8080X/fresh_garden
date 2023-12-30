@@ -1,4 +1,4 @@
-import { PlantationInnerParams, PlantationParams } from "../types.ts";
+import { PlantationInnerParams, PlantationParams } from "../../types.ts";
 import { getPathMatchByPathsAndRegExps } from "./pathMatch.ts";
 
 export function getInnerParams(

@@ -1,4 +1,4 @@
-import { z, type ZodIssue } from "../deps.ts";
+import { z, type ZodIssue } from "../../deps.ts";
 
 interface PlantationTextValidateResultSuccess {
   success: true;

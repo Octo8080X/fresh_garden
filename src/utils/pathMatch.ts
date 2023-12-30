@@ -1,4 +1,4 @@
-import { PlantationRouteAction } from "../types.ts";
+import { PlantationRouteAction } from "../../types.ts";
 
 export function getPathMatchByPathsAndRegExps(
   pathAndRegExps: (RegExp | string)[],

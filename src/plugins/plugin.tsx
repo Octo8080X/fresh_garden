@@ -1,5 +1,6 @@
-import { type CsrfOption, getCsrfPlugin, type Plugin } from "../deps.ts";
-import { DefaultActions, PlantationParams } from "../types.ts";
+/// <reference lib="deno.unstable" />
+import { type CsrfOption, getCsrfPlugin, type Plugin } from "../../deps.ts";
+import { DefaultActions, PlantationParams } from "../../types.ts";
 import { getCreateComponent, getCreateHandler } from "../routes/create.tsx";
 import { getLoginComponent, getLoginHandler } from "../routes/login.tsx";
 import { getLogoutHandler } from "../routes/logout.tsx";

@@ -1,5 +1,5 @@
-import { FreshContext, Handlers, WithCsrf } from "../deps.ts";
-import { PlantationInnerParams } from "../types.ts";
+import { FreshContext, Handlers, WithCsrf } from "../../deps.ts";
+import { PlantationInnerParams } from "../../types.ts";
 
 export function getLogoutHandler(
   { auth, loginAfterPath, logoutAfterPath, resourceName }:

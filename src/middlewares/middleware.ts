@@ -1,5 +1,5 @@
-import type { FreshContext } from "../deps.ts";
-import type { PlantationInnerParams } from "../types.ts";
+import type { FreshContext } from "../../deps.ts";
+import type { PlantationInnerParams } from "../../types.ts";
 
 export function getPlantationMiddleware({
   auth,

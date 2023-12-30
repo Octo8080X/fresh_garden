@@ -1,4 +1,3 @@
-/** @jsx h */
 import {
   FreshContext,
   h,
@@ -7,10 +6,10 @@ import {
   PageProps,
   pascalCase,
   WithCsrf,
-} from "../deps.ts";
+} from "../../deps.ts";
 import { styles } from "../utils/style.ts";
 import { stringValidate } from "../utils/validates.ts";
-import { PlantationInnerParams } from "../types.ts";
+import { PlantationInnerParams } from "../../types.ts";
 import { PASSWORD } from "../utils/const.ts";
 
 export function getLoginHandler(

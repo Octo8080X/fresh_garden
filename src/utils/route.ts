@@ -4,13 +4,13 @@ import {
   Handler,
   pascalCase,
   PluginRoute,
-} from "../deps.ts";
+} from "../../deps.ts";
 import {
   DefaultActions,
   PlantationComponentAction,
   PlantationHandlerAction,
   PlantationInnerParams,
-} from "../types.ts";
+} from "../../types.ts";
 import { getCustomFilePath } from "./pathMatch.ts";
 
 export async function getHandler(
