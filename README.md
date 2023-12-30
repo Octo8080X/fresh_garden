@@ -1,4 +1,6 @@
-﻿# Plantation
+﻿[![Made with Fresh](https://fresh.deno.dev/fresh-badge-dark.svg)](https://fresh.deno.dev)
+
+# Plantation
 
 Authentication plugin for Fresh(Deno) using Lucia.
 
@@ -59,3 +61,4 @@ When using the user resource, set `resourceName: "user"`.
 At this time, if plantation/user/create.tsx(login.tsx, logout.tsx) is available, it is referenced first.
 
 Use this for your own customization of CSS or for more detailed customization.
+
