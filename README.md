@@ -3,6 +3,7 @@
 # Plantation
 
 Authentication plugin for Fresh(Deno) using Lucia.
+Plantation is inspired by [devise](https://github.com/heartcombo/devise).
 
 # Usage
 
