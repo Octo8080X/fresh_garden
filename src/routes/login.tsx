@@ -93,7 +93,7 @@ export function getLoginComponent(
     return (
       <div style={styles.block}>
         <div>
-          <h2>LOGIN</h2>
+          <h2>Login</h2>
         </div>
         <div>
           <form action={paths.loginPath} method="post">
