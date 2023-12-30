@@ -58,7 +58,7 @@ Create File: ./plantation/user/login.tsx
 Create File: ./plantation/user/logout.tsx
 ```
 
-When using the user resource, set `resourceName: "user"`.
+When using the user resource, set `resourceName: "user"`.  
 At this time, if plantation/user/create.tsx(login.tsx, logout.tsx) is available, it is referenced first.
 
 Use this for your own customization of CSS or for more detailed customization.
