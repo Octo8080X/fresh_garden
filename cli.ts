@@ -6,6 +6,14 @@ const parsedArgs = parseArgs(Deno.args);
 ensureDirSync(`./plantation`);
 ensureDirSync(`./plantation/${parsedArgs["_"][0]}`);
 
-Deno.writeTextFileSync(`./plantation/${parsedArgs["_"][0]}/create.tsx`, "AAA")
-Deno.writeTextFileSync(`./plantation/${parsedArgs["_"][0]}/login.tsx`,  "AAA")
-Deno.writeTextFileSync(`./plantation/${parsedArgs["_"][0]}/logout.tsx`, "AAA")
+const create = await fetch(
+  "https://raw.githubusercontent.com/Octo8080X/plantation/main/routes/create.tsx",
+);
+Deno.writeTextFileSync(
+  `./plantation/${parsedArgs["_"][0]}/create.tsx`,
+  await create.text(),
+);
+
+Deno.writeTextFileSync(`./plantation/${parsedArgs["_"][0]}/login.tsx`, "AAA");
+
+Deno.writeTextFileSync(`./plantation/${parsedArgs["_"][0]}/logout.tsx`, "AAA");

@@ -6,12 +6,12 @@ import {
   LuciaError,
   PageProps,
   pascalCase,
+  PASSWORD,
+  PlantationInnerParams,
+  stringValidate,
+  styles,
   WithCsrf,
-} from "../deps.ts";
-import { styles } from "../utils/style.ts";
-import { stringValidate } from "../utils/validates.ts";
-import { PlantationInnerParams } from "../types.ts";
-import { PASSWORD } from "../utils/const.ts";
+} from "https://raw.githubusercontent.com/Octo8080X/plantation/main/templateDeps.ts";
 
 export function getLoginHandler(
   { auth, loginAfterPath, resourceIdentifierName, paths }:

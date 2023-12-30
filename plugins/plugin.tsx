@@ -1,4 +1,4 @@
-import { type Plugin, type CsrfOption, getCsrfPlugin } from "../deps.ts";
+import { type CsrfOption, getCsrfPlugin, type Plugin } from "../deps.ts";
 import { DefaultActions, PlantationParams } from "../types.ts";
 import { getCreateComponent, getCreateHandler } from "../routes/create.tsx";
 import { getLoginComponent, getLoginHandler } from "../routes/login.tsx";

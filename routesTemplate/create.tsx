@@ -2,21 +2,25 @@
 import {
   FreshContext,
   h,
-  Handlers,
   LuciaError,
   PageProps,
   pascalCase,
+  PASSWORD,
+  PlantationInnerParams,
+  sameLogicValidate,
+  styles,
   WithCsrf,
-} from "../deps.ts";
-import { styles } from "../utils/style.ts";
-import { stringValidate } from "../utils/validates.ts";
-import { PlantationInnerParams } from "../types.ts";
-import { PASSWORD } from "../utils/const.ts";
+} from "https://raw.githubusercontent.com/Octo8080X/plantation/main/templateDeps.ts";
 
-export function getLoginHandler(
-  { auth, loginAfterPath, resourceIdentifierName, paths }:
-    PlantationInnerParams,
-): Handlers<unknown, WithCsrf> {
+export function getCreateHandler(
+  {
+    auth,
+    loginAfterPath,
+    resourceIdentifierName,
+    identifierSchema,
+    passwordSchema,
+  }: PlantationInnerParams,
+) {
   return {
     async POST(req: Request, ctx: FreshContext<WithCsrf>) {
       const formData = await req.formData();
@@ -26,19 +30,24 @@ export function getLoginHandler(
         return new Response(null, {
           status: 302,
           headers: {
-            Location: paths.loginPath,
+            Location: req.headers.get("referer") || "/",
           },
         });
       }
 
       const identifier = formData.get(resourceIdentifierName);
-      const password = formData.get("password");
+      const password = formData.get(PASSWORD);
 
-      const identifierResult = stringValidate(
+      const identifierResult = sameLogicValidate(
         resourceIdentifierName,
         identifier?.toString(),
+        identifierSchema,
       );
-      const passwordResult = stringValidate("password", password?.toString());
+      const passwordResult = sameLogicValidate(
+        "password",
+        password?.toString(),
+        passwordSchema,
+      );
 
       if (!(identifierResult.success && passwordResult.success)) {
         return ctx.render({
@@ -48,42 +57,47 @@ export function getLoginHandler(
       }
 
       try {
-        const key = await auth.useKey(
-          resourceIdentifierName,
-          identifierResult.data,
-          passwordResult.data,
-        );
+        const user = await auth.createUser({
+          key: {
+            providerId: resourceIdentifierName,
+            providerUserId: identifierResult.data,
+            password: passwordResult.data,
+          },
+          attributes: {
+            [resourceIdentifierName]: identifierResult.data,
+          },
+        });
         const session = await auth.createSession({
-          userId: key.userId,
+          userId: user.userId,
           attributes: {},
         });
         const sessionCookie = auth.createSessionCookie(session);
+
         return new Response(null, {
           headers: {
             Location: loginAfterPath,
-            "Set-Cookie": sessionCookie.serialize(),
+            "Set-Cookie": sessionCookie.serialize(), // store session cookie
           },
           status: 302,
         });
       } catch (e) {
         console.error("e", e);
-        if (
-          e instanceof LuciaError &&
-          ["AUTH_INVALID_KEY_ID", "AUTH_INVALID_PASSWORD"].includes(e.message)
-        ) {
+        if (e instanceof LuciaError) {
           return ctx.render({
-            errors: ["Incorrect username or password"],
+            errors: ["Auth system error"],
             identifier,
           });
         }
-        throw new LuciaError("AUTH_INVALID_KEY_ID");
+        return new Response("An unknown error occurred", {
+          status: 500,
+        });
       }
     },
   };
 }
 
-export function getLoginComponent(
-  { paths, resourceIdentifierName }: PlantationInnerParams,
+export function getCreateComponent(
+  { resourceIdentifierName, paths }: PlantationInnerParams,
 ) {
   return function (
     { data, state }: PageProps<
@@ -94,10 +108,10 @@ export function getLoginComponent(
     return (
       <div style={styles.block}>
         <div>
-          <h2>LOGIN</h2>
+          <h2>Create Account</h2>
         </div>
         <div>
-          <form action={paths.loginPath} method="post">
+          <form action={paths.createPath} method="post">
             <input type="hidden" name="csrf" value={state.csrf.getTokenStr()} />
             <div style={styles.row}>
               {data?.errors?.length > 0 && (
@@ -128,12 +142,12 @@ export function getLoginComponent(
               />
             </div>
             <div style={styles.row}>
-              <button type="submit" style={styles.button}>Login</button>
+              <button type="submit" style={styles.button}>CREATE</button>
             </div>
           </form>
         </div>
         <div>
-          <a href={paths.createPath} style={styles.link}>Create Account</a>
+          <a href={paths.loginPath} style={styles.link}>LOGIN</a>
         </div>
       </div>
     );

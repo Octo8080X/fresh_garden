@@ -1,5 +1,12 @@
 /** @jsx h */
-import { h, FreshContext, LuciaError, PageProps, pascalCase, WithCsrf } from "../deps.ts";
+import {
+  FreshContext,
+  h,
+  LuciaError,
+  PageProps,
+  pascalCase,
+  WithCsrf,
+} from "../deps.ts";
 import { PlantationInnerParams } from "../types.ts";
 import { styles } from "../utils/style.ts";
 import { sameLogicValidate } from "../utils/validates.ts";
