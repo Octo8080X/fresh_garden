@@ -8,7 +8,7 @@ ensureDirSync(`./plantation`);
 ensureDirSync(`./plantation/${parsedArgs["_"][0]}`);
 
 const create = await fetch(
-  "https://raw.githubusercontent.com/Octo8080X/plantation/main/routesTemplate/create.tsx",
+  "https://deno.land/x/plantation@0.0.1/routesTemplate/create.tsx?source=",
 );
 const createFilePath = `./plantation/${parsedArgs["_"][0]}/create.tsx`;
 Deno.writeTextFileSync(
