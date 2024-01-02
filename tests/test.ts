@@ -1,6 +1,6 @@
 import { createHandler, ServeHandlerInfo } from "$fresh/server.ts";
 import manifest from "./work/fresh.gen.ts";
-import config, { connectionPool } from "./config/test_fresh.config.ts";
+import config from "./config/test_fresh.config.ts";
 import { expect } from "./test_deps.ts";
 
 const CONN_INFO: ServeHandlerInfo = {
@@ -8,8 +8,6 @@ const CONN_INFO: ServeHandlerInfo = {
 };
 
 Deno.test("Response Test", async (t) => {
-  //    const handler = await createHandler(manifest, config);
-
   await t.step("No login => Redirect", async () => {
     const handler = await createHandler(manifest, config);
     let resp = await handler(
@@ -44,31 +42,6 @@ Deno.test("Response Test", async (t) => {
     const text = await resp.text();
     expect(text.includes('href="/user/login"')).toBe(true);
   });
-  //
-  //
-  //  await t.step("Not Work Session(incorrect cookie)", async () => {
-  //    let resp = await handler(
-  //      new Request("http://127.0.0.1/session"),
-  //      CONN_INFO,
-  //    );
-  //    assertEquals(resp.status, 200);
-  //
-  //    let text = await resp.text();
-  //    assertEquals(text.includes("<p>count:0</p>"), true);
-  //
-  //    const sessionKey =
-  //      (resp.headers.get("set-cookie")!).split("session=")[1].split(";")[0];
-  //
-  //    resp = await handler(
-  //      new Request("http://127.0.0.1/session", {
-  //        headers: { cookie: `session=${sessionKey}AA` },
-  //      }),
-  //      CONN_INFO,
-  //    );
-  //    assertEquals(resp.status, 200);
-  //    text = await resp.text();
-  //    assertEquals(text.includes("<p>count:0</p>"), true);
-  //  });
 });
 
 await Deno.test(
