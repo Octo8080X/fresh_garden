@@ -7,7 +7,7 @@ const connection = await mysql.createConnection({
   host: "localhost",
   user: "root",
   password: "password_root",
-  port: 3307,
+  port: 3306,
   database: "test",
 });
 
@@ -41,7 +41,7 @@ export const connectionPool = mysql.createPool({
   host: "localhost",
   user: "root",
   password: "password_root",
-  port: 3307,
+  port: 3306,
 });
 
 export const auth = lucia({
