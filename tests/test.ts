@@ -71,7 +71,7 @@ Deno.test("Response Test", async (t) => {
   //  });
 });
 
-Deno.test(
+await Deno.test(
   {
     name: "Login test",
     async fn(t) {
@@ -142,11 +142,6 @@ Deno.test(
       });
 
       await t.step("Logout", async () => {
-        //        const formData = new FormData();
-        //        formData.append("csrf", csrfToken);
-        //        formData.append("email", "test@example.com");
-        //        formData.append("password", "password");
-
         const headers = new Headers();
         headers.set("cookie", `auth_session=${authSession}`);
 
