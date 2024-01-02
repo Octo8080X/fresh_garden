@@ -4,7 +4,7 @@ import { mysql2 } from "npm:@lucia-auth/adapter-mysql";
 import mysql from "npm:mysql2/promise";
 
 const connection = await mysql.createConnection({
-  host: "localhost",
+  host: "0.0.0.0",
   user: "root",
   password: "password_root",
   port: 3306,
@@ -38,7 +38,7 @@ await connection.destroy();
 
 export const connectionPool = mysql.createPool({
   database: "test",
-  host: "localhost",
+  host: "0.0.0.0",
   user: "root",
   password: "password_root",
   port: 3306,
