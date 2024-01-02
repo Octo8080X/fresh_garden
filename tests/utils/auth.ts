@@ -11,9 +11,9 @@ const connection = await mysql.createConnection({
   database: "test",
 });
 
-//await connection.query(`DROP TABLE user_session`);
-//await connection.query(`DROP TABLE user_key`);
-//await connection.query(`DROP TABLE user`);
+await connection.query(`DROP TABLE IF EXISTS user_session`);
+await connection.query(`DROP TABLE IF EXISTS user_key`);
+await connection.query(`DROP TABLE IF EXISTS user`);
 
 await connection.query(`CREATE TABLE user (
   id VARCHAR(15) NOT NULL PRIMARY KEY,
