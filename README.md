@@ -1,9 +1,12 @@
-﻿[![Made with Fresh](https://fresh.deno.dev/fresh-badge-dark.svg)](https://fresh.deno.dev)
+﻿# Plantation 🍋
 
-# Plantation
+Authentication plugin for Fresh(Deno) using Lucia.
 
-Authentication plugin for Fresh(Deno) using Lucia.  
 Plantation is inspired by [devise](https://github.com/heartcombo/devise).
+Combining plantation with fresh provides the ability to create accounts, log in
+and log out.
+
+[![Made with Fresh](https://fresh.deno.dev/fresh-badge-dark.svg)](https://fresh.deno.dev)
 
 # Usage
 
@@ -47,6 +50,11 @@ export default defineConfig({
 });
 ```
 
+## permission
+
+- read
+- write(when doing cli)
+
 ## Custom handler and component
 
 You can use the cli tool to build your own handlers and components.
@@ -58,8 +66,8 @@ Create File: ./plantation/user/login.tsx
 Create File: ./plantation/user/logout.tsx
 ```
 
-When using the user resource, set `resourceName: "user"`.  
-At this time, if plantation/user/create.tsx(login.tsx, logout.tsx) is available, it is referenced first.
+When using the user resource, set `resourceName: "user"`.\
+At this time, if plantation/user/create.tsx(login.tsx, logout.tsx) is available,
+it is referenced first.
 
 Use this for your own customization of CSS or for more detailed customization.
-

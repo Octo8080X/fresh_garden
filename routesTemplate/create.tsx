@@ -108,7 +108,7 @@ export function getCreateComponent(
     return (
       <div style={styles.block}>
         <div>
-          <h2>Create Account</h2>
+          <h2>Custom Create Account</h2>
         </div>
         <div>
           <form action={paths.createPath} method="post">

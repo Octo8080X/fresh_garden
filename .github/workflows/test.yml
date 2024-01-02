@@ -36,6 +36,9 @@ jobs:
       - name: view deno.json
         run: cat ./deno.json
 
+      - name: Start Database on Docker
+        run: cd docker && docker-compose up -d && cd ..
+
       - name: Run tests
         run: deno test --unstable --allow-read --allow-write --allow-env --allow-net --no-check --coverage=./coverage
       

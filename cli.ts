@@ -15,7 +15,7 @@ Deno.writeTextFileSync(
   createFilePath,
   await create.text(),
 );
-console.info(`✅ Create File: ${createFilePath}`) 
+console.info(`✅ Create File: ${createFilePath}`);
 
 const login = await fetch(
   "https://raw.githubusercontent.com/Octo8080X/plantation/main/routesTemplate/create.tsx",
@@ -26,7 +26,7 @@ Deno.writeTextFileSync(
   loginFilePath,
   await login.text(),
 );
-console.info(`✅ Create File: ${loginFilePath}`) 
+console.info(`✅ Create File: ${loginFilePath}`);
 
 const logout = await fetch(
   "https://raw.githubusercontent.com/Octo8080X/plantation/main/routesTemplate/logout.tsx",
@@ -37,4 +37,4 @@ Deno.writeTextFileSync(
   logoutFilePath,
   await logout.text(),
 );
-console.info(`✅ Create File: ${logoutFilePath}`) 
+console.info(`✅ Create File: ${logoutFilePath}`);
