@@ -62,35 +62,39 @@ export default defineConfig({
 ```ts
 import { LogoutForm } from "../../mod.ts";
 import type { WithPlantation } from "../../mod.ts";
-import type { PageProps} from "$fresh/server.ts";
+import type { PageProps } from "$fresh/server.ts";
 
-export default function MustLogin(props: PageProps<unknown, WithPlantation<"user">>) {
+export default function MustLogin(
+  props: PageProps<unknown, WithPlantation<"user">>,
+) {
   return (
     <div class="px-4 py-8 mx-auto bg-[#86efac]">
       <div class="max-w-screen-md mx-auto flex flex-col items-center justify-center">
         MUST LOGIN
-        <p>{props.state.plantation.authUserSession.resourceName} id : {props.state.plantation.authUserSession.user.userId}</p>
+        <p>
+          {props.state.plantation.authUserSession.resourceName} id :{" "}
+          {props.state.plantation.authUserSession.user.userId}
+        </p>
       </div>
     </div>
   );
 }
 ```
 
-In the case of `user`, the ID of the resource can be obtained as in `props.state.plantation.authUserSession.user.userId`.  
+In the case of `user`, the ID of the resource can be obtained as in
+`props.state.plantation.authUserSession.user.userId`.\
 Similarly, the handler can also retrieve this.
 
-```ts 
+```ts
 export const handler = {
-  GET(req: Request, ctx: FreshContext<WithPlantation<"user">>){
-
+  GET(req: Request, ctx: FreshContext<WithPlantation<"user">>) {
     // ex. get user id
     // ctx.state.plantation.authUserSession.user.userId
 
-    return ctx.render()
-  }
-}
+    return ctx.render();
+  },
+};
 ```
-
 
 ## Custom handler and component
 

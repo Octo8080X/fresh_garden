@@ -7,5 +7,5 @@ export {
   passwordSchema,
   usernameSchema,
 } from "./src/utils/validates.ts";
-export type { PlantationParams , WithPlantation } from "./types.ts";
+export type { PlantationParams, WithPlantation } from "./types.ts";
 export { LogoutForm } from "./src/components/LogoutForm.tsx";
