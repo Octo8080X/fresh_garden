@@ -72,3 +72,17 @@ export interface DefaultActions {
     ) => Handlers<unknown, WithCsrf>;
   };
 }
+
+
+type IdName<T extends string> = `${T}Id`;
+type LuciaObjectKey<T extends string> = `auth${Capitalize<T>}Session`;
+
+export interface WithPlantation<Q extends string> extends Record<string, unknown> {
+  plantation:{
+    [K in LuciaObjectKey<Q>]: {
+      [KK in Q]:{
+        [KKK in IdName<Q>]: string;
+      };
+    } & {resourceName:string}
+  }
+}

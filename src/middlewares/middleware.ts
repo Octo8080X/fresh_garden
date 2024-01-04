@@ -1,4 +1,5 @@
 import type { FreshContext } from "../../deps.ts";
+import { pascalCase } from "../../deps.ts";
 import type { PlantationInnerParams } from "../../types.ts";
 
 export function getPlantationMiddleware({
@@ -37,7 +38,7 @@ export function getPlantationMiddleware({
     }
 
     if (session) {
-      ctx.state[`auth${resourceName}Session`] = session;
+      ctx.state["plantation"]= {[`auth${pascalCase(resourceName)}Session`]: {...session, resourceName}}
     }
     return await ctx.next();
   };
