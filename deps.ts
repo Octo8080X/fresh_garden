@@ -20,5 +20,5 @@ export {
   type CsrfOption,
   getCsrfPlugin,
   type WithCsrf,
-} from "https://deno.land/x/fresh_csrf@0.1.1/mod.ts";
+} from "https://deno.land/x/fresh_csrf@0.1.2/mod.ts";
 export { h, type JSX } from "https://esm.sh/preact@10.19.2";
