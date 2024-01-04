@@ -72,8 +72,8 @@ export default function MustLogin(
       <div class="max-w-screen-md mx-auto flex flex-col items-center justify-center">
         MUST LOGIN
         <p>
-          {props.state.plantation.authUserSession.resourceName} id :{" "}
-          {props.state.plantation.authUserSession.user.userId}
+          {props.state.plantation.authUserSession.resourceName}
+          id :{props.state.plantation.authUserSession.user.userId}
         </p>
       </div>
     </div>
