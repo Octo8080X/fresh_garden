@@ -38,7 +38,12 @@ export function getPlantationMiddleware({
     }
 
     if (session) {
-      ctx.state["plantation"]= {[`auth${pascalCase(resourceName)}Session`]: {...session, resourceName}}
+      ctx.state["plantation"] = {
+        [`auth${pascalCase(resourceName)}Session`]: {
+          ...session,
+          resourceName,
+        },
+      };
     }
     return await ctx.next();
   };
