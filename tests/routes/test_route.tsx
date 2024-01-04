@@ -1,4 +1,5 @@
-import { LogoutForm, PageProps, WithCsrf } from "../../mod.ts";
+import { LogoutForm } from "../../mod.ts";
+import { PageProps, WithCsrf } from "../../deps.ts";
 
 export default function MustLogin(props: PageProps<unknown, WithCsrf>) {
   return (
