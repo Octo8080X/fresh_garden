@@ -108,6 +108,11 @@ await Deno.test(
 
         expect(resp.status).toBe(302);
         expect(resp.headers.get("location")).toBe("/must_login");
+        expect(
+          resp.headers.get("set-cookie")!.split("auth_session=")[1].split(
+            "; ",
+          )[1],
+        ).toBe("Path=/");
         authSession =
           resp.headers.get("set-cookie")!.split("auth_session=")[1].split(
             ";",
