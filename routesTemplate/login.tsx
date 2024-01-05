@@ -99,7 +99,11 @@ export function getLoginComponent(
           </div>
           <div>
             <form action={paths.loginPath} method="post">
-              <input type="hidden" name="csrf" value={state.csrf.getTokenStr()} />
+              <input
+                type="hidden"
+                name="csrf"
+                value={state.csrf.getTokenStr()}
+              />
               <div style={styles.row}>
                 {data?.errors?.length > 0 && (
                   <ul>
@@ -128,7 +132,7 @@ export function getLoginComponent(
                   style={styles.textbox}
                 />
               </div>
-              <div style={{...styles.row, ...styles.centering}}>
+              <div style={{ ...styles.row, ...styles.centering }}>
                 <button type="submit" style={styles.button}>Login</button>
               </div>
             </form>

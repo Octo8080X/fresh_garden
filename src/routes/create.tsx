@@ -112,7 +112,11 @@ export function getCreateComponent(
           </div>
           <div>
             <form action={paths.createPath} method="post">
-              <input type="hidden" name="csrf" value={state.csrf.getTokenStr()} />
+              <input
+                type="hidden"
+                name="csrf"
+                value={state.csrf.getTokenStr()}
+              />
               <div style={styles.row}>
                 {data?.errors?.length > 0 && (
                   <ul>
@@ -141,7 +145,7 @@ export function getCreateComponent(
                   style={styles.textbox}
                 />
               </div>
-              <div style={{...styles.row, ...styles.centering}}>
+              <div style={{ ...styles.row, ...styles.centering }}>
                 <button type="submit" style={styles.button}>Create</button>
               </div>
             </form>
