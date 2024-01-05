@@ -52,7 +52,7 @@ export async function getHandler(
       console.error(err.message);
       Deno.exit(1);
     }
-  }else {
+  } else {
     console.log(`${customFilePath} is not found. Use default Handler.`);
   }
 
