@@ -44,9 +44,9 @@ jobs:
       
       - name: Copy Template
         run: |
-          cp -r ./routesTemplate\create.tsx ./tests/plantation/user/create.tsx && 
-          cp -r ./routesTemplate\login.tsx ./tests/plantation/user/login.tsx &&
-          cp -r ./routesTemplate\logout.tsx ./tests/plantation/user/logout.tsx &&
+          cp -r ./routesTemplate/create.tsx ./tests/plantation/user/create.tsx && 
+          cp -r ./routesTemplate/login.tsx ./tests/plantation/user/login.tsx &&
+          cp -r ./routesTemplate/logout.tsx ./tests/plantation/user/logout.tsx &&
           tree 
 
       - name: Run tests
