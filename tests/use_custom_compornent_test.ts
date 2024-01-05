@@ -17,7 +17,7 @@ Deno.test("Response Test", async (t) => {
 
     expect(resp.status).toBe(200);
     const text = await resp.text();
-    expect(text.includes('Custom Login')).toBe(true);
+    expect(text.includes("Custom Login")).toBe(true);
   });
 
   await t.step("/user/create has `Custom Create Account`", async () => {
@@ -29,7 +29,7 @@ Deno.test("Response Test", async (t) => {
 
     expect(resp.status).toBe(200);
     const text = await resp.text();
-    expect(text.includes('Custom Create Account')).toBe(true);
+    expect(text.includes("Custom Create Account")).toBe(true);
   });
 });
 
