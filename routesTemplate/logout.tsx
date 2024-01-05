@@ -3,10 +3,10 @@ import {
   Handlers,
   PlantationInnerParams,
   WithCsrf,
-} from "https://raw.githubusercontent.com/Octo8080X/plantation/main/templateDeps.ts";
+} from "https://deno.land/x/plantation/templateDeps.ts";
 
 export function getLogoutHandler(
-  { auth, loginAfterPath, logoutAfterPath, resourceName }:
+  { auth, logoutAfterPath }:
     PlantationInnerParams,
 ): Handlers<unknown, WithCsrf> {
   return {

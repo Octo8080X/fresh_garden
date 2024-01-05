@@ -40,7 +40,18 @@ jobs:
         run: cd docker && docker compose up -d && cd .. && sleep 10 && docker container ls
 
       - name: Run tests
-        run: deno test --unstable --allow-read --allow-write --allow-env --allow-net --no-check --coverage=./coverage
+        run: deno test --unstable --allow-read --allow-write --allow-env --allow-net --no-check --coverage=./coverage tests/basic_test.ts
+      
+      - name: Copy Template
+        run: |
+          cp -r ./routesTemplate\create.tsx ./tests/plantation/user/create.tsx && 
+          cp -r ./routesTemplate\login.tsx ./tests/plantation/user/login.tsx &&
+          cp -r ./routesTemplate\logout.tsx ./tests/plantation/user/logout.tsx &&
+          tree 
+
+      - name: Run tests
+        run: deno test --unstable --allow-read --allow-write --allow-env --allow-net --no-check --coverage=./coverage tests/use_custom_compornent_test
+
       
       - name: View coverage
         run: |

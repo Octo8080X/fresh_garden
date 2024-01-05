@@ -1,7 +1,5 @@
-/** @jsx h */
 import {
   FreshContext,
-  h,
   LuciaError,
   PageProps,
   pascalCase,
@@ -10,8 +8,7 @@ import {
   sameLogicValidate,
   styles,
   WithCsrf,
-} from "https://raw.githubusercontent.com/Octo8080X/plantation/main/templateDeps.ts";
-
+} from "https://deno.land/x/plantation/templateDeps.ts";
 export function getCreateHandler(
   {
     auth,
