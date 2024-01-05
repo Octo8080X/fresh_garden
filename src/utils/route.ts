@@ -37,6 +37,7 @@ export async function getHandler(
   const pascalCaseAction = pascalCase(action);
 
   if (isReadableFile) {
+    console.log(`${customFilePath} is found. Use custom Handler`);
     try {
       const custom = await import(customFilePath);
       if (!custom[`get${pascalCaseAction}Handler`]) {
@@ -51,6 +52,8 @@ export async function getHandler(
       console.error(err.message);
       Deno.exit(1);
     }
+  }else {
+    console.log(`${customFilePath} is not found. Use default Handler.`);
   }
 
   return customHandler || defaultHandler;
@@ -80,6 +83,7 @@ export async function getComponent(
   const pascalCaseAction = pascalCase(action);
 
   if (isReadableFile) {
+    console.log(`${customFilePath} is found. Use custom component`);
     try {
       const custom = await import(customFilePath);
       if (!custom[`get${pascalCaseAction}Component`]) {
@@ -94,6 +98,8 @@ export async function getComponent(
       console.error(err.message);
       Deno.exit(1);
     }
+  } else {
+    console.log(`${customFilePath} is not found. Use default component.`);
   }
 
   return customComponent || defaultComponent;
