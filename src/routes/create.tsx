@@ -106,47 +106,49 @@ export function getCreateComponent(
   ) {
     return (
       <div style={styles.block}>
-        <div>
-          <h2>Create Account</h2>
-        </div>
-        <div>
-          <form action={paths.createPath} method="post">
-            <input type="hidden" name="csrf" value={state.csrf.getTokenStr()} />
-            <div style={styles.row}>
-              {data?.errors?.length > 0 && (
-                <ul>
-                  {data.errors.map((error) => <li>{error}</li>)}
-                </ul>
-              )}
-            </div>
-            <div style={styles.row}>
-              <label for={resourceIdentifierName} style={styles.label}>
-                {pascalCase(resourceIdentifierName)}
-              </label>
-              <input
-                type="text"
-                id={resourceIdentifierName}
-                name={resourceIdentifierName}
-                style={styles.textbox}
-                value={data?.identifier}
-              />
-            </div>
-            <div style={styles.row}>
-              <label for="password" style={styles.label}>Password</label>
-              <input
-                type="password"
-                id={PASSWORD}
-                name={PASSWORD}
-                style={styles.textbox}
-              />
-            </div>
-            <div style={styles.row}>
-              <button type="submit" style={styles.button}>CREATE</button>
-            </div>
-          </form>
-        </div>
-        <div>
-          <a href={paths.loginPath} style={styles.link}>LOGIN</a>
+        <div style={styles.container}>
+          <div style={styles.centering}>
+            <h2>Create Account</h2>
+          </div>
+          <div>
+            <form action={paths.createPath} method="post">
+              <input type="hidden" name="csrf" value={state.csrf.getTokenStr()} />
+              <div style={styles.row}>
+                {data?.errors?.length > 0 && (
+                  <ul>
+                    {data.errors.map((error) => <li>{error}</li>)}
+                  </ul>
+                )}
+              </div>
+              <div style={styles.row}>
+                <label for={resourceIdentifierName} style={styles.label}>
+                  {pascalCase(resourceIdentifierName)}
+                </label>
+                <input
+                  type="text"
+                  id={resourceIdentifierName}
+                  name={resourceIdentifierName}
+                  style={styles.textbox}
+                  value={data?.identifier}
+                />
+              </div>
+              <div style={styles.row}>
+                <label for="password" style={styles.label}>Password</label>
+                <input
+                  type="password"
+                  id={PASSWORD}
+                  name={PASSWORD}
+                  style={styles.textbox}
+                />
+              </div>
+              <div style={{...styles.row, ...styles.centering}}>
+                <button type="submit" style={styles.button}>Create</button>
+              </div>
+            </form>
+          </div>
+          <div style={styles.centering}>
+            <a href={paths.loginPath} style={styles.link}>Login</a>
+          </div>
         </div>
       </div>
     );
