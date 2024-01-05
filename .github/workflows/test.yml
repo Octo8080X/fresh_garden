@@ -52,7 +52,7 @@ jobs:
           tree 
 
       - name: Run tests
-        run: deno test --unstable --allow-read --allow-write --allow-env --allow-net --no-check --coverage=./coverage tests/use_custom_compornent_test
+        run: deno test --unstable --allow-read --allow-write --allow-env --allow-net --no-check --coverage=./coverage tests/use_custom_compornent_test.ts
 
       
       - name: View coverage
