@@ -10,7 +10,7 @@ const CONN_INFO: ServeHandlerInfo = {
 Deno.test("Response Test", async (t) => {
   await t.step("/user/login has `Custom Login`", async () => {
     const handler = await createHandler(manifest, config);
-    let resp = await handler(
+    const resp = await handler(
       new Request("http://127.0.0.1/user/login"),
       CONN_INFO,
     );
@@ -22,13 +22,14 @@ Deno.test("Response Test", async (t) => {
 
   await t.step("/user/create has `Custom Create Account`", async () => {
     const handler = await createHandler(manifest, config);
-    let resp = await handler(
+    const resp = await handler(
       new Request("http://127.0.0.1/user/create"),
       CONN_INFO,
     );
 
     expect(resp.status).toBe(200);
     const text = await resp.text();
+    console.log(text);
     expect(text.includes("Custom Create Account")).toBe(true);
   });
 });

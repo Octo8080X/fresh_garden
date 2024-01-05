@@ -10,7 +10,7 @@ const CONN_INFO: ServeHandlerInfo = {
 Deno.test("Response Test", async (t) => {
   await t.step("No login => Redirect", async () => {
     const handler = await createHandler(manifest, config);
-    let resp = await handler(
+    const resp = await handler(
       new Request("http://127.0.0.1/"),
       CONN_INFO,
     );
@@ -21,7 +21,7 @@ Deno.test("Response Test", async (t) => {
 
   await t.step("/user/login has /user/create link", async () => {
     const handler = await createHandler(manifest, config);
-    let resp = await handler(
+    const resp = await handler(
       new Request("http://127.0.0.1/user/login"),
       CONN_INFO,
     );
@@ -33,7 +33,7 @@ Deno.test("Response Test", async (t) => {
 
   await t.step("/user/create has /user/login link", async () => {
     const handler = await createHandler(manifest, config);
-    let resp = await handler(
+    const resp = await handler(
       new Request("http://127.0.0.1/user/create"),
       CONN_INFO,
     );
