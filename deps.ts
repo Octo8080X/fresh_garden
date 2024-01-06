@@ -22,4 +22,4 @@ export {
   type WithCsrf,
 } from "https://deno.land/x/fresh_csrf@0.1.2/mod.ts";
 export { h, type JSX } from "https://esm.sh/preact@10.19.2";
-export {deleteCookie} from "https://deno.land/std@0.211.0/http/cookie.ts";
+export {deleteCookie, setCookie} from "https://deno.land/std@0.211.0/http/cookie.ts";

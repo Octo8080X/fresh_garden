@@ -1,4 +1,4 @@
-import { FreshContext, Handlers, WithCsrf, deleteCookie } from "../../deps.ts";
+import { FreshContext, Handlers, WithCsrf, deleteCookie, setCookie } from "../../deps.ts";
 import { PlantationInnerParams } from "../../types.ts";
 
 export function getLogoutHandler(
@@ -27,7 +27,7 @@ export function getLogoutHandler(
           Location: logoutAfterPath,
         }
 
-        deleteCookie(headers, "auth_session");
+        setCookie(headers, { name: "auth_session", value: "", httpOnly: true, path: "/",  }); 
 
         return new Response("Unauthorized", {
           status: 302,
