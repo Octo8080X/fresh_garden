@@ -49,7 +49,10 @@ jobs:
           cp -r ./routesTemplate/create.tsx ./tests/plantation/user/create.tsx && 
           cp -r ./routesTemplate/login.tsx ./tests/plantation/user/login.tsx &&
           cp -r ./routesTemplate/logout.tsx ./tests/plantation/user/logout.tsx &&
-          tree 
+          tree &&
+          pwd &&
+          ls -la ./tests/plantation/user &&
+          cat /home/runner/work/plantation/plantation/tests/plantation/user/logout.tsx
 
       - name: Run tests
         run: deno test --unstable --allow-read --allow-write --allow-env --allow-net --no-check --coverage=./coverage tests/use_custom_compornent_test.ts
