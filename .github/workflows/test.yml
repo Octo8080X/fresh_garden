@@ -54,7 +54,7 @@ jobs:
           ls -la ./tests/plantation/user &&
           cat /home/runner/work/plantation/plantation/tests/plantation/user/logout.tsx &&
           ls -la ./tests/plantation/user && 
-          ls- la ./tests
+          ls -la ./tests
 
       - name: Run tests
         run: deno test --unstable --allow-read --allow-write --allow-env --allow-net --no-check --coverage=./coverage tests/use_custom_compornent_test.ts
