@@ -92,6 +92,10 @@ export function getCreateHandler(
         });
       }
     },
+    async GET(req: Request, ctx: FreshContext<WithCsrf>) {
+      ctx.state.csrf.updateKeyPair();
+      return await ctx.render();
+    },
   };
 }
 
