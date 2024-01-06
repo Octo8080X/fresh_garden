@@ -27,7 +27,7 @@ export function getLogoutHandler(
           Location: logoutAfterPath,
         }
 
-        setCookie(headers, { name: "auth_session", value: "", httpOnly: true, path: "/", expires: -1 }); 
+        setCookie(headers, { name: "auth_session", value: "", httpOnly: true, path: "/", maxAge: -1 }); 
 
         return new Response("Unauthorized", {
           status: 302,
