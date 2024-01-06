@@ -77,6 +77,10 @@ export function getLoginHandler(
         throw new LuciaError("AUTH_INVALID_KEY_ID");
       }
     },
+    async GET(req: Request, ctx: FreshContext<WithCsrf>) {
+      ctx.state.csrf.updateKeyPair();
+      return await ctx.render();
+    },
   };
 }
 

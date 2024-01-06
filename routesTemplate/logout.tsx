@@ -6,7 +6,8 @@ import {
 } from "https://deno.land/x/plantation/templateDeps.ts";
 
 export function getLogoutHandler(
-  { auth, logoutAfterPath }: PlantationInnerParams,
+  { auth, logoutAfterPath }:
+    PlantationInnerParams,
 ): Handlers<unknown, WithCsrf> {
   return {
     async POST(req: Request, ctx: FreshContext<WithCsrf>) {
@@ -26,13 +27,27 @@ export function getLogoutHandler(
       const session = await authRequest.validate();
       if (session) {
         auth.invalidateSession(session.sessionId);
-        return new Response("Unauthorized", {
-          status: 302,
-          headers: {
+
+        const headers = new Headers(
+          {
             Location: logoutAfterPath,
           },
+        );
+
+        setCookie(headers, {
+          name: "auth_session",
+          value: "",
+          httpOnly: true,
+          path: "/",
+          maxAge: 0,
+        });
+
+        return new Response("Unauthorized", {
+          status: 302,
+          headers,
         });
       } else {
+        ctx.state.csrf.updateKeyPair();
         return new Response("Unauthorized", {
           status: 302,
           headers: {

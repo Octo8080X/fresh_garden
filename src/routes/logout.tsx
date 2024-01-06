@@ -1,5 +1,4 @@
 import {
-  deleteCookie,
   FreshContext,
   Handlers,
   setCookie,
@@ -8,7 +7,7 @@ import {
 import { PlantationInnerParams } from "../../types.ts";
 
 export function getLogoutHandler(
-  { auth, loginAfterPath, logoutAfterPath, resourceName }:
+  { auth, logoutAfterPath }:
     PlantationInnerParams,
 ): Handlers<unknown, WithCsrf> {
   return {

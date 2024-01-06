@@ -50,7 +50,7 @@ export async function getHandler(
       );
     } catch (err) {
       console.error(err.message);
-      Deno.exit(1);
+      throw err;
     }
   } else {
     console.log(`${customFilePath} is not found. Use default Handler.`);
@@ -96,7 +96,7 @@ export async function getComponent(
       );
     } catch (err) {
       console.error(err.message);
-      Deno.exit(1);
+      throw err;
     }
   } else {
     console.log(`${customFilePath} is not found. Use default component.`);
