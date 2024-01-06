@@ -46,9 +46,9 @@ jobs:
         run: |
           mkdir -p ./tests/plantation &&
           mkdir -p ./tests/plantation/user &&
-          cp -r ./routesTemplate/create.tsx ./tests/plantation/user/create.tsx && 
-          cp -r ./routesTemplate/login.tsx ./tests/plantation/user/login.tsx &&
-          cp -r ./routesTemplate/logout.tsx ./tests/plantation/user/logout.tsx &&
+          cp -p ./routesTemplate/create.tsx ./tests/plantation/user/create.tsx && 
+          cp -p ./routesTemplate/login.tsx ./tests/plantation/user/login.tsx &&
+          cp -p ./routesTemplate/logout.tsx ./tests/plantation/user/logout.tsx &&
           tree &&
           pwd &&
           ls -la ./tests/plantation/user &&
