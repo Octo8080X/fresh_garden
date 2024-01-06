@@ -41,25 +41,7 @@ jobs:
 
       - name: Run tests
         run: deno test --unstable --allow-read --allow-write --allow-env --allow-net --no-check --coverage=./coverage tests/basic_test.ts
-      
-      - name: Copy Template
-        run: |
-          mkdir -p ./tests/plantation &&
-          mkdir -p ./tests/plantation/user &&
-          cp -p ./routesTemplate/create.tsx ./tests/plantation/user/create.tsx && 
-          cp -p ./routesTemplate/login.tsx ./tests/plantation/user/login.tsx &&
-          cp -p ./routesTemplate/logout.tsx ./tests/plantation/user/logout.tsx &&
-          tree &&
-          pwd &&
-          ls -la ./tests/plantation/user &&
-          cat /home/runner/work/plantation/plantation/tests/plantation/user/logout.tsx &&
-          ls -la ./tests/plantation/user && 
-          ls -la ./tests
 
-      - name: Run tests
-        run: deno test --unstable --allow-read --allow-write --allow-env --allow-net --no-check --coverage=./coverage tests/use_custom_compornent_test.ts
-
-      
       - name: View coverage
         run: |
             # reference: https://github.com/jhechtf/code-coverage

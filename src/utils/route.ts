@@ -27,7 +27,6 @@ export async function getHandler(
     action,
   );
 
-  console.log(`DO ${fromFileUrl(customFilePath)}`);
   const isReadableFile = existsSync(fromFileUrl(customFilePath), {
     isReadable: true,
     isDirectory: false,

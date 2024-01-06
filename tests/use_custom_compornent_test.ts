@@ -29,7 +29,6 @@ Deno.test("Response Test", async (t) => {
 
     expect(resp.status).toBe(200);
     const text = await resp.text();
-    console.log(text);
     expect(text.includes("Custom Create Account")).toBe(true);
   });
 });
