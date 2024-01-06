@@ -23,11 +23,14 @@ export function getLogoutHandler(
       const session = await authRequest.validate();
       if (session) {
         auth.invalidateSession(session.sessionId);
-        const headers = {
-          Location: logoutAfterPath,
-        }
 
-        setCookie(headers, { name: "auth_session", value: "", httpOnly: true, path: "/", maxAge: -1 }); 
+        const headers = new Headers(
+          {
+            Location: logoutAfterPath,
+          }
+        );
+
+        setCookie(headers, { name: "auth_session", value: "", httpOnly: true, path: "/", maxAge: 0 }); 
 
         return new Response("Unauthorized", {
           status: 302,
