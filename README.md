@@ -8,6 +8,10 @@ and log out.
 
 [![Made with Fresh](https://fresh.deno.dev/fresh-badge-dark.svg)](https://fresh.deno.dev)
 
+# Demo Site
+
+[plantation-demo.deno.dev](https://plantation-demo.deno.dev/)
+
 # Usage
 
 ## fresh.config.ts
