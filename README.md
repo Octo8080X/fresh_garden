@@ -10,7 +10,7 @@ and log out.
 
 # Demo Site
 
-<a href="https://plantation-demo.deno.dev/"  target="_blank"  rel="noopener noreferrer">plantation-demo.deno.dev</a>
+[plantation-demo.deno.dev](https://plantation-demo.deno.dev/)
 
 # Usage
 
