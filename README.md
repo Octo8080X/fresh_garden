@@ -105,6 +105,7 @@ $ deno run --allow-write --allow-net https://deno.land/x/plantation/cli.ts user
 Create File: ./plantation/user/create.tsx
 Create File: ./plantation/user/login.tsx
 Create File: ./plantation/user/logout.tsx
+Please add `(async () => await import('./plantation/extra_loader.ts'));` to your main.ts
 ```
 
 When using the user resource, set `resourceName: "user"`.\
