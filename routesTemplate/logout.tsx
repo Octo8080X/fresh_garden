@@ -6,8 +6,7 @@ import {
 } from "https://deno.land/x/plantation/templateDeps.ts";
 
 export function getLogoutHandler(
-  { auth, logoutAfterPath }:
-    PlantationInnerParams,
+  { auth, logoutAfterPath }: PlantationInnerParams,
 ): Handlers<unknown, WithCsrf> {
   return {
     async POST(req: Request, ctx: FreshContext<WithCsrf>) {

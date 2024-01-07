@@ -1,14 +1,8 @@
-import {
-  FreshContext,
-  Handlers,
-  setCookie,
-  WithCsrf,
-} from "../../deps.ts";
+import { FreshContext, Handlers, setCookie, WithCsrf } from "../../deps.ts";
 import { PlantationInnerParams } from "../../types.ts";
 
 export function getLogoutHandler(
-  { auth, logoutAfterPath }:
-    PlantationInnerParams,
+  { auth, logoutAfterPath }: PlantationInnerParams,
 ): Handlers<unknown, WithCsrf> {
   return {
     async POST(req: Request, ctx: FreshContext<WithCsrf>) {
