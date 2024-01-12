@@ -1,7 +1,7 @@
 import {
   FreshContext,
-  Handlers,
   GardenInnerParams,
+  Handlers,
   WithCsrf,
 } from "https://deno.land/x/garden/templateDeps.ts";
 

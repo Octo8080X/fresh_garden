@@ -13,8 +13,7 @@ import { GardenInnerParams } from "../../types.ts";
 import { PASSWORD } from "../utils/const.ts";
 
 export function getLoginHandler(
-  { auth, loginAfterPath, resourceIdentifierName, paths }:
-    GardenInnerParams,
+  { auth, loginAfterPath, resourceIdentifierName, paths }: GardenInnerParams,
 ): Handlers<unknown, WithCsrf> {
   return {
     async POST(req: Request, ctx: FreshContext<WithCsrf>) {

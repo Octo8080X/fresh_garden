@@ -1,10 +1,10 @@
-﻿# Fresh Garden  🍋
+﻿# Fresh Garden 🍋
 
 Authentication plugin for Fresh(Deno) using Lucia.
 
-Fresh Garden  is inspired by [devise](https://github.com/heartcombo/devise).
-Combining garden with fresh provides the ability to create accounts, log in
-and log out.
+Fresh Garden is inspired by [devise](https://github.com/heartcombo/devise).
+Combining garden with fresh provides the ability to create accounts, log in and
+log out.
 
 [![Made with Fresh](https://fresh.deno.dev/fresh-badge-dark.svg)](https://fresh.deno.dev)
 
@@ -113,7 +113,7 @@ Please add "(async () => await import('./garden/extra_loader.ts'));" to your mai
 ```
 
 When using the user resource, set `resourceName: "user"`.\
-At this time, if garden/user/create.tsx(login.tsx, logout.tsx) is available,
-it is referenced first.
+At this time, if garden/user/create.tsx(login.tsx, logout.tsx) is available, it
+is referenced first.
 
 Use this for your own customization of CSS or for more detailed customization.

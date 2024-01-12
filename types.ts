@@ -76,8 +76,7 @@ export interface DefaultActions {
 type IdName<T extends string> = `${T}Id`;
 type LuciaObjectKey<T extends string> = `auth${Capitalize<T>}Session`;
 
-export interface WithGarden<Q extends string>
-  extends Record<string, unknown> {
+export interface WithGarden<Q extends string> extends Record<string, unknown> {
   garden: {
     [K in LuciaObjectKey<Q>]:
       & {

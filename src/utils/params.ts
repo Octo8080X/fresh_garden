@@ -4,8 +4,7 @@ import { getPathMatchByPathsAndRegExps } from "./pathMatch.ts";
 export function getInnerParams(
   gardenParams: GardenParams,
 ): GardenInnerParams {
-  const { resourceName, allowNoSessionPaths, ...innerParams } =
-    gardenParams;
+  const { resourceName, allowNoSessionPaths, ...innerParams } = gardenParams;
   const createPath = `/${resourceName}/create`;
   const loginPath = `/${resourceName}/login`;
   const logoutPath = `/${resourceName}/logout`;
