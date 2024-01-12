@@ -10,7 +10,7 @@ log out.
 
 # Demo Site
 
-[garden-demo.deno.dev](https://garden-demo.deno.dev/)
+[fresh-garden-demo.deno.dev](https://fresh-garden-demo.deno.dev/)
 
 # Usage
 
