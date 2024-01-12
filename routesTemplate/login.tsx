@@ -1,19 +1,18 @@
 import {
   FreshContext,
+  GardenInnerParams,
   Handlers,
   LuciaError,
   PageProps,
   pascalCase,
   PASSWORD,
-  PlantationInnerParams,
   stringValidate,
   styles,
   WithCsrf,
-} from "https://deno.land/x/plantation/templateDeps.ts";
+} from "https://deno.land/x/garden/templateDeps.ts";
 
 export function getLoginHandler(
-  { auth, loginAfterPath, resourceIdentifierName, paths }:
-    PlantationInnerParams,
+  { auth, loginAfterPath, resourceIdentifierName, paths }: GardenInnerParams,
 ): Handlers<unknown, WithCsrf> {
   return {
     async POST(req: Request, ctx: FreshContext<WithCsrf>) {
@@ -85,7 +84,7 @@ export function getLoginHandler(
 }
 
 export function getLoginComponent(
-  { paths, resourceIdentifierName }: PlantationInnerParams,
+  { paths, resourceIdentifierName }: GardenInnerParams,
 ) {
   return function (
     { data, state }: PageProps<

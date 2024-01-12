@@ -10,66 +10,66 @@ if (!parsedArgs["_"][0]) {
   Deno.exit(1);
 }
 
-ensureDirSync(`./plantation`);
-ensureDirSync(`./plantation/${parsedArgs["_"][0]}`);
+ensureDirSync(`./garden`);
+ensureDirSync(`./garden/${parsedArgs["_"][0]}`);
 
-// ./plantation/extra_load.tsx が存在しなければ作成する
-if (!existsSync(`./plantation/extra_load.tsx`)) {
-  const souceText = "console.log('Load ./plantation!');\n";
+// ./garden/extra_load.tsx が存在しなければ作成する
+if (!existsSync(`./garden/extra_load.tsx`)) {
+  const souceText = "console.log('Load ./garden!');\n";
 
   Deno.writeTextFileSync(
-    `./plantation/extra_load.ts`,
+    `./garden/extra_load.ts`,
     souceText,
   );
-  console.info(`✅ Create File: ./plantation/extra_load.ts`);
+  console.info(`✅ Create File: ./garden/extra_load.ts`);
 }
 
 const create = await fetch(
-  "https://deno.land/x/plantation@0.0.1/routesTemplate/create.tsx?source=",
+  "https://deno.land/x/garden@0.0.1/routesTemplate/create.tsx?source=",
 );
-const createFilePath = `./plantation/${parsedArgs["_"][0]}/create.tsx`;
+const createFilePath = `./garden/${parsedArgs["_"][0]}/create.tsx`;
 Deno.writeTextFileSync(
   createFilePath,
   await create.text(),
 );
 console.info(`✅ Create File: ${createFilePath}`);
 Deno.writeTextFileSync(
-  `./plantation/extra_load.ts`,
+  `./garden/extra_load.ts`,
   `(async () => await import('.${createFilePath}'));\n`,
   { append: true },
 );
 
 const login = await fetch(
-  "https://raw.githubusercontent.com/Octo8080X/plantation/main/routesTemplate/create.tsx",
+  "https://raw.githubusercontent.com/Octo8080X/garden/main/routesTemplate/create.tsx",
 );
 
-const loginFilePath = `./plantation/${parsedArgs["_"][0]}/login.tsx`;
+const loginFilePath = `./garden/${parsedArgs["_"][0]}/login.tsx`;
 Deno.writeTextFileSync(
   loginFilePath,
   await login.text(),
 );
 console.info(`✅ Create File: ${loginFilePath}`);
 Deno.writeTextFileSync(
-  `./plantation/extra_load.ts`,
+  `./garden/extra_load.ts`,
   `(async () => await import('.${loginFilePath}'));\n`,
   { append: true },
 );
 const logout = await fetch(
-  "https://raw.githubusercontent.com/Octo8080X/plantation/main/routesTemplate/logout.tsx",
+  "https://raw.githubusercontent.com/Octo8080X/garden/main/routesTemplate/logout.tsx",
 );
 
-const logoutFilePath = `./plantation/${parsedArgs["_"][0]}/logout.tsx`;
+const logoutFilePath = `./garden/${parsedArgs["_"][0]}/logout.tsx`;
 Deno.writeTextFileSync(
   logoutFilePath,
   await logout.text(),
 );
 console.info(`✅ Create File: ${logoutFilePath}`);
 Deno.writeTextFileSync(
-  `./plantation/extra_load.ts`,
+  `./garden/extra_load.ts`,
   `(async () => await import('.${logoutFilePath}'));\n`,
   { append: true },
 );
 
 console.info(
-  `Please add \`(async () => await import('./plantation/extra_loader.ts'));\` to your main.ts.`,
+  `Please add \`(async () => await import('./garden/extra_loader.ts'));\` to your main.ts.`,
 );

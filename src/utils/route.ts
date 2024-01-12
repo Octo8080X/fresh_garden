@@ -7,23 +7,23 @@ import {
 } from "../../deps.ts";
 import {
   DefaultActions,
-  PlantationComponentAction,
-  PlantationHandlerAction,
-  PlantationInnerParams,
+  GardenComponentAction,
+  GardenHandlerAction,
+  GardenInnerParams,
 } from "../../types.ts";
 import { getCustomFilePath } from "./pathMatch.ts";
 
 export async function getHandler(
-  plantationInnerParams: PlantationInnerParams,
-  action: PlantationHandlerAction,
+  gardenInnerParams: GardenInnerParams,
+  action: GardenHandlerAction,
   defaultActions: DefaultActions,
 ): Promise<Handler> {
   const defaultHandler = defaultActions[action].getHandler(
-    plantationInnerParams,
+    gardenInnerParams,
   );
 
   const customFilePath = getCustomFilePath(
-    plantationInnerParams.resourceName,
+    gardenInnerParams.resourceName,
     action,
   );
 
@@ -46,7 +46,7 @@ export async function getHandler(
         );
       }
       customHandler = custom[`get${pascalCaseAction}Handler`](
-        plantationInnerParams,
+        gardenInnerParams,
       );
     } catch (err) {
       console.error(err.message);
@@ -60,16 +60,16 @@ export async function getHandler(
 }
 
 export async function getComponent(
-  plantationInnerParams: PlantationInnerParams,
-  action: PlantationComponentAction,
+  gardenInnerParams: GardenInnerParams,
+  action: GardenComponentAction,
   defaultActions: DefaultActions,
 ): Promise<PluginRoute["component"]> {
   const defaultComponent = defaultActions[action].getComponent(
-    plantationInnerParams,
+    gardenInnerParams,
   );
 
   const customFilePath = getCustomFilePath(
-    plantationInnerParams.resourceName,
+    gardenInnerParams.resourceName,
     action,
   );
 
@@ -92,7 +92,7 @@ export async function getComponent(
         );
       }
       customComponent = custom[`get${pascalCaseAction}Component`](
-        plantationInnerParams,
+        gardenInnerParams,
       );
     } catch (err) {
       console.error(err.message);
@@ -106,14 +106,14 @@ export async function getComponent(
 }
 
 export async function getCreateRoute(
-  plantationInnerParams: PlantationInnerParams,
+  gardenInnerParams: GardenInnerParams,
   defaultActions: DefaultActions,
 ): Promise<PluginRoute> {
   return {
-    path: plantationInnerParams.paths.createPath,
-    handler: await getHandler(plantationInnerParams, "create", defaultActions),
+    path: gardenInnerParams.paths.createPath,
+    handler: await getHandler(gardenInnerParams, "create", defaultActions),
     component: await getComponent(
-      plantationInnerParams,
+      gardenInnerParams,
       "create",
       defaultActions,
     ),
@@ -121,14 +121,14 @@ export async function getCreateRoute(
 }
 
 export async function getLoginRoute(
-  plantationInnerParams: PlantationInnerParams,
+  gardenInnerParams: GardenInnerParams,
   defaultActions: DefaultActions,
 ): Promise<PluginRoute> {
   return {
-    path: plantationInnerParams.paths.loginPath,
-    handler: await getHandler(plantationInnerParams, "login", defaultActions),
+    path: gardenInnerParams.paths.loginPath,
+    handler: await getHandler(gardenInnerParams, "login", defaultActions),
     component: await getComponent(
-      plantationInnerParams,
+      gardenInnerParams,
       "login",
       defaultActions,
     ),
@@ -136,11 +136,11 @@ export async function getLoginRoute(
 }
 
 export async function getLogoutRoute(
-  plantationInnerParams: PlantationInnerParams,
+  gardenInnerParams: GardenInnerParams,
   defaultActions: DefaultActions,
 ): Promise<PluginRoute> {
   return {
-    path: plantationInnerParams.paths.logoutPath,
-    handler: await getHandler(plantationInnerParams, "logout", defaultActions),
+    path: gardenInnerParams.paths.logoutPath,
+    handler: await getHandler(gardenInnerParams, "logout", defaultActions),
   };
 }
