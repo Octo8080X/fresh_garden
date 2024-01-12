@@ -1,18 +1,18 @@
 import { z, type ZodIssue } from "../../deps.ts";
 
-interface PlantationTextValidateResultSuccess {
+interface GardenTextValidateResultSuccess {
   success: true;
   errors: string[];
   data: string;
 }
 
-interface PlantationTextValidateResultFailure {
+interface GardenTextValidateResultFailure {
   success: false;
   errors: string[];
 }
-export type PlantationTextValidateResult =
-  | PlantationTextValidateResultSuccess
-  | PlantationTextValidateResultFailure;
+export type GardenTextValidateResult =
+  | GardenTextValidateResultSuccess
+  | GardenTextValidateResultFailure;
 
 export const usernameSchema = z
   .coerce
@@ -53,7 +53,7 @@ export function sameLogicValidate(
   name: string,
   testTarget: string | undefined | null,
   zodSchema: z.ZodString,
-): PlantationTextValidateResult {
+): GardenTextValidateResult {
   const result = zodSchema.safeParse(testTarget);
 
   if (result.success) {
@@ -69,7 +69,7 @@ export function sameLogicValidate(
 export function stringValidate(
   name: string,
   testTarget: string | undefined | null,
-): PlantationTextValidateResult {
+): GardenTextValidateResult {
   const result = stringValidSchema.safeParse(testTarget);
 
   if (result.success) {

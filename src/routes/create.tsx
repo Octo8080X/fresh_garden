@@ -6,7 +6,7 @@ import {
   pascalCase,
   WithCsrf,
 } from "../../deps.ts";
-import { PlantationInnerParams } from "../../types.ts";
+import { GardenInnerParams } from "../../types.ts";
 import { styles } from "../utils/style.ts";
 import { sameLogicValidate } from "../utils/validates.ts";
 import { PASSWORD } from "../utils/const.ts";
@@ -18,7 +18,7 @@ export function getCreateHandler(
     resourceIdentifierName,
     identifierSchema,
     passwordSchema,
-  }: PlantationInnerParams,
+  }: GardenInnerParams,
 ) {
   return {
     async POST(req: Request, ctx: FreshContext<WithCsrf>) {
@@ -100,7 +100,7 @@ export function getCreateHandler(
 }
 
 export function getCreateComponent(
-  { resourceIdentifierName, paths }: PlantationInnerParams,
+  { resourceIdentifierName, paths }: GardenInnerParams,
 ) {
   return function (
     { data, state }: PageProps<

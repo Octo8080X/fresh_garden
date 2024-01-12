@@ -1,11 +1,11 @@
-import { PlantationInnerParams, PlantationParams } from "../../types.ts";
+import { GardenInnerParams, GardenParams } from "../../types.ts";
 import { getPathMatchByPathsAndRegExps } from "./pathMatch.ts";
 
 export function getInnerParams(
-  plantationParams: PlantationParams,
-): PlantationInnerParams {
+  gardenParams: GardenParams,
+): GardenInnerParams {
   const { resourceName, allowNoSessionPaths, ...innerParams } =
-    plantationParams;
+    gardenParams;
   const createPath = `/${resourceName}/create`;
   const loginPath = `/${resourceName}/login`;
   const logoutPath = `/${resourceName}/logout`;

@@ -1,11 +1,11 @@
 /// <reference lib="deno.unstable" />
 import { type CsrfOption, getCsrfPlugin, type Plugin } from "../../deps.ts";
-import { DefaultActions, PlantationParams } from "../../types.ts";
+import { DefaultActions, GardenParams } from "../../types.ts";
 import { getCreateComponent, getCreateHandler } from "../routes/create.tsx";
 import { getLoginComponent, getLoginHandler } from "../routes/login.tsx";
 import { getLogoutHandler } from "../routes/logout.tsx";
 
-import { getPlantationMiddleware } from "../middlewares/middleware.ts";
+import { getGardenMiddleware } from "../middlewares/middleware.ts";
 import { getInnerParams } from "../utils/params.ts";
 import {
   getCreateRoute,
@@ -27,37 +27,37 @@ const defaultActions: DefaultActions = {
   },
 };
 
-export async function getPlantationPlugin(
-  plantationParams: PlantationParams,
+export async function getGardenPlugin(
+  gardenParams: GardenParams,
 ): Promise<Plugin> {
-  const plantationInnerParams = getInnerParams(plantationParams);
+  const gardenInnerParams = getInnerParams(gardenParams);
 
   return {
-    name: "plantation",
+    name: "garden",
     middlewares: [
       {
         middleware: {
-          handler: getPlantationMiddleware(plantationInnerParams),
+          handler: getGardenMiddleware(gardenInnerParams),
         },
-        path: plantationParams.setupRootPath,
+        path: gardenParams.setupRootPath,
       },
     ],
     routes: [
-      await getCreateRoute(plantationInnerParams, defaultActions),
-      await getLoginRoute(plantationInnerParams, defaultActions),
-      await getLogoutRoute(plantationInnerParams, defaultActions),
+      await getCreateRoute(gardenInnerParams, defaultActions),
+      await getLoginRoute(gardenInnerParams, defaultActions),
+      await getLogoutRoute(gardenInnerParams, defaultActions),
     ],
   };
 }
 
-export async function getPlantationWithCsrfPlugins(
-  { csrf, plantationParams }: {
+export async function getGardenWithCsrfPlugins(
+  { csrf, gardenParams }: {
     csrf: { kv: Deno.Kv; csrfOption?: Partial<CsrfOption> | undefined };
-    plantationParams: PlantationParams;
+    gardenParams: GardenParams;
   },
 ) {
   return [
     await getCsrfPlugin(csrf.kv, csrf.csrfOption),
-    await getPlantationPlugin(plantationParams),
+    await getGardenPlugin(gardenParams),
   ];
 }

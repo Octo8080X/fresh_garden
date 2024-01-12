@@ -9,12 +9,12 @@ import {
 } from "../../deps.ts";
 import { styles } from "../utils/style.ts";
 import { stringValidate } from "../utils/validates.ts";
-import { PlantationInnerParams } from "../../types.ts";
+import { GardenInnerParams } from "../../types.ts";
 import { PASSWORD } from "../utils/const.ts";
 
 export function getLoginHandler(
   { auth, loginAfterPath, resourceIdentifierName, paths }:
-    PlantationInnerParams,
+    GardenInnerParams,
 ): Handlers<unknown, WithCsrf> {
   return {
     async POST(req: Request, ctx: FreshContext<WithCsrf>) {
@@ -86,7 +86,7 @@ export function getLoginHandler(
 }
 
 export function getLoginComponent(
-  { paths, resourceIdentifierName }: PlantationInnerParams,
+  { paths, resourceIdentifierName }: GardenInnerParams,
 ) {
   return function (
     { data, state }: PageProps<

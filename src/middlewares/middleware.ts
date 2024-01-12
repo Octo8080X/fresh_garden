@@ -1,15 +1,15 @@
 import type { FreshContext } from "../../deps.ts";
 import { pascalCase } from "../../deps.ts";
-import type { PlantationInnerParams } from "../../types.ts";
+import type { GardenInnerParams } from "../../types.ts";
 
-export function getPlantationMiddleware({
+export function getGardenMiddleware({
   auth,
   paths,
   resourceName,
   loginAfterPath,
   isAllowNoSessionPath,
   isSessionLogicPath,
-}: PlantationInnerParams) {
+}: GardenInnerParams) {
   return async function (req: Request, ctx: FreshContext) {
     if (ctx.destination !== "route") {
       return await ctx.next();
@@ -38,7 +38,7 @@ export function getPlantationMiddleware({
     }
 
     if (session) {
-      ctx.state["plantation"] = {
+      ctx.state["garden"] = {
         [`auth${pascalCase(resourceName)}Session`]: {
           ...session,
           resourceName,

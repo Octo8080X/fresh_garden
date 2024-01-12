@@ -2,7 +2,7 @@
 import { defineConfig } from "$fresh/server.ts";
 import { testPlugin } from "../plugins/test_plugin.ts";
 
-import { getPlantationWithCsrfPlugins } from "../../mod.ts";
+import { getGardenWithCsrfPlugins } from "../../mod.ts";
 import { auth, connectionPool } from "../utils/auth.ts";
 export { connectionPool };
 import { z } from "../../deps.ts";
@@ -12,12 +12,12 @@ const testPasswordSchema = z.coerce.string().trim().min(8);
 
 export default defineConfig({
   plugins: [
-    ...(await getPlantationWithCsrfPlugins(
+    ...(await getGardenWithCsrfPlugins(
       {
         csrf: {
           kv: await Deno.openKv(":memory:"),
         },
-        plantationParams: {
+        gardenParams: {
           setupRootPath: "/",
           auth: auth,
           allowNoSessionPaths: [],

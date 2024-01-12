@@ -1,4 +1,4 @@
-import { PlantationRouteAction } from "../../types.ts";
+import { GardenRouteAction } from "../../types.ts";
 
 export function getPathMatchByPathsAndRegExps(
   pathAndRegExps: (RegExp | string)[],
@@ -25,10 +25,10 @@ function getPathMatch(paths: string[], regExps: RegExp[]) {
 
 export function getCustomFilePath(
   resourceName: string,
-  action: PlantationRouteAction,
+  action: GardenRouteAction,
 ): string {
   const mainModulePaths = Deno.mainModule.split("/");
   mainModulePaths.pop();
   return mainModulePaths.join("/") +
-    `/plantation/${resourceName}/${action}.tsx`;
+    `/garden/${resourceName}/${action}.tsx`;
 }
