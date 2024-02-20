@@ -1,6 +1,6 @@
-import { lucia } from "npm:lucia";
-import { web } from "npm:lucia/middleware";
-import { mysql2 } from "npm:@lucia-auth/adapter-mysql";
+import { lucia } from "npm:lucia@2.7.7";
+import { web } from "npm:lucia@2.7.7/middleware";
+import { mysql2 } from "npm:@lucia-auth/adapter-mysql@2.1.0";
 import mysql from "npm:mysql2/promise";
 
 const connection = await mysql.createConnection({

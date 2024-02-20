@@ -10,8 +10,8 @@ export type {
   PluginRoute,
 } from "https://deno.land/x/fresh@1.6.1/server.ts";
 export type { ComponentType } from "https://esm.sh/preact@10.18.1";
-export type { Auth, Session } from "npm:lucia";
-export { LuciaError } from "npm:lucia";
+export type { Auth, Session } from "npm:lucia@2.7.7";
+export { LuciaError } from "npm:lucia@2.7.7";
 export { z, type ZodIssue } from "https://deno.land/x/zod@v3.22.4/mod.ts";
 export { fromFileUrl } from "https://deno.land/std@0.209.0/path/mod.ts";
 export { existsSync } from "https://deno.land/std@0.209.0/fs/exists.ts";
